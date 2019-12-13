@@ -1,0 +1,87 @@
+{
+    "name": "webpack-template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack-dev-server --config ./config/webpack.config.js --env.env=dev",
+        "build": "webpack --config ./config/webpack.config.js --env.env=prod",
+        "build:analyze": "npm run build -- --env.addon=bundleanalyze --env.addon=bundlevisualizer",
+        "static:icons": "gulp iconfont",
+        "static:images": "gulp imgmin",
+        "lint:scss": "stylelint './**/*.scss'",
+        "lint:scss:fix": "stylelint './**/*.scss' --fix",
+        "lint:js": "eslint . --ext .js,.jsx",
+        "lint:js:fix": "npm run lint:js --fix",
+        "test": "echo \"Error: no test specified\" && exit 0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.5",
+        "@babel/preset-env": "^7.7.6",
+        "@babel/preset-react": "^7.7.4",
+        "@babel/preset-stage-2": "^7.0.0",
+        "autoprefixer": "^9.7.3",
+        "babel-eslint": "^10.0.3",
+        "babel-loader": "^8.0.6",
+        "cache-loader": "^4.1.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^3.3.2",
+        "dotenv-webpack": "^1.7.0",
+        "eslint": "^6.7.2",
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-config-prettier": "^6.7.0",
+        "eslint-loader": "^3.0.3",
+        "eslint-plugin-import": "^2.19.1",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.1",
+        "eslint-plugin-react": "^7.17.0",
+        "eslint-plugin-react-hooks": "^1.7.0",
+        "file-loader": "^5.0.2",
+        "html-webpack-plugin": "^3.2.0",
+        "husky": "^3.1.0",
+        "image-webpack-loader": "^6.0.0",
+        "lint-staged": "^9.5.0",
+        "mini-css-extract-plugin": "^0.8.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "postcss-loader": "^3.0.0",
+        "prettier": "^1.19.1",
+        "pretty-quick": "^2.0.1",
+        "react-hot-loader": "^4.12.18",
+        "sass": "^1.23.7",
+        "sass-loader": "^8.0.0",
+        "style-loader": "^1.0.1",
+        "stylelint": "^12.0.0",
+        "stylelint-config-airbnb": "0.0.0",
+        "stylelint-order": "^3.1.1",
+        "stylelint-scss": "^3.13.0",
+        "terser-webpack-plugin": "^2.3.0",
+        "url-loader": "^3.0.0",
+        "webpack": "^4.41.2",
+        "webpack-bundle-analyzer": "^3.6.0",
+        "webpack-cli": "^3.3.10",
+        "webpack-dev-server": "^3.9.0",
+        "webpack-merge": "^4.2.2",
+        "webpack-visualizer-plugin": "^0.1.11"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "pre-push": "yarn lint:js --fix"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,tsx}": [
+            "yarn lint:js"
+        ],
+        "*.scss": [
+            "yarn lint:scss"
+        ]
+    }
+}
